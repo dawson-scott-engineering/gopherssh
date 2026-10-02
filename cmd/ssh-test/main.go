@@ -4,12 +4,14 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"time"
 
 	"github.com/dawson-scott-engineering/gopherssh"
 	"github.com/joho/godotenv"
 )
 
 func main() {
+
 	if err := godotenv.Load(); err != nil {
 		log.Fatal("Error loading .env:", err)
 	}
@@ -21,15 +23,23 @@ func main() {
 		Platform: "cisco_ios",
 	}
 
+	connectStart := time.Now()
+
 	if err := device.Connect(); err != nil {
 		log.Fatal("Failed to connect:", err)
 	}
+
+	fmt.Println("Connect took:", time.Since(connectStart))
+
 	defer device.Close()
 
-	output, err := device.RunCommand("show run")
+	commandStart := time.Now()
+
+	output, err := device.RunCommand("sh ip int br")
 	if err != nil {
 		log.Println("Failed to run command:", err)
 	}
 
+	fmt.Println("Command took:", time.Since(commandStart))
 	fmt.Println(string(output))
 }
