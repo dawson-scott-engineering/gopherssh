@@ -1,6 +1,6 @@
-# SSH
+# GopherSSH
 
-A lightweight SSH library written in Go for connecting to network devices and executing remote commands.
+A lightweight, reusable SSH library written in Go for connecting to network devices, executing remote commands, and building network automation tools.
 
 ## Features
 
@@ -8,16 +8,21 @@ A lightweight SSH library written in Go for connecting to network devices and ex
 * Password authentication
 * Remote command execution
 * Session management
+* Designed for network automation
 
 ## Installation
 
 ```bash
-go get github.com/dawson-scott-engineering/go-ssh
+go get github.com/dawson-scott-engineering/gopherssh
 ```
+
+## Usage
+
+
 
 ## Status
 
-Work in progress.
+Work in progress. GopherSSH is actively being developed as a reusable SSH library for Go-based network automation.
 
 ## License
 
